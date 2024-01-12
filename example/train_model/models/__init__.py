@@ -1,0 +1,1 @@
+from example.train_model.models.resnet34 import MasksModelFromResNet

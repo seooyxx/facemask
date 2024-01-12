@@ -1,2 +1,8 @@
-# facemask
-GDSC AI Week Day 5: Face Mask Detection Model
+# Fast API with Machine Learning
+fast api with machine learning
+
+## Dataset
+- Titanic
+- MovieLens1M
+
+## 
