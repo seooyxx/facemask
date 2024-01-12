@@ -1,8 +1,8 @@
-# Fast API with Machine Learning
-fast api with machine learning
+# GDSC AI Week
+
+# Fast API with Deep Learning
+fast api with Deep learning
 
 ## Dataset
-- Titanic
-- MovieLens1M
-
+- Face Mask Detection
 ## 
