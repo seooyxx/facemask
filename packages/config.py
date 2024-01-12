@@ -1,14 +1,10 @@
 import os
-import sys
-from typing import List, Optional, Union
-from datetime import datetime
 
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings
 
 from pydantic import Field
 from pydantic import validator
-
 from packages.handler import ModelHandler
 
 
@@ -32,7 +28,6 @@ class APIEnvConfig(BaseSettings):
     host: str = Field(default='0.0.0.0', env='api host')
     port: int = Field(default='8000', env='api server port')
     
-    # host 점검
     @validator("host", pre=True)
     def check_host(cls, host_input):
         if host_input == 'localhost':
@@ -41,7 +36,6 @@ class APIEnvConfig(BaseSettings):
             raise ValueError("host error")
         return host_input
     
-    # port 점검
     @validator("port", pre=True)
     def check_port(cls, port_input):
         if port_input not in VariableConfig().port_list:
@@ -52,17 +46,3 @@ class APIEnvConfig(BaseSettings):
 class APIConfig(BaseModel):
     api_name: str = 'main:app'
     api_info: APIEnvConfig = APIEnvConfig()
-
-
-# class DataInput(BaseModel):
-#     user_id: int = Field(ge=0, le=1000)
-#     movie_id:int = Field(ge=0, le=500)
-#     gender:int = Field(ge=0, le=1)
-#     age:int = Field(ge=0, le=6)
-#     occupation:int = Field(ge=0, le=10)
-#     genre:int = Field(ge=0, le=10)
-    
-
-# class PredictOutput(BaseModel):
-#     prob:float
-#     prediction:int

@@ -2,7 +2,6 @@ from fastapi import APIRouter, File, UploadFile
 import torch
 from PIL import Image
 from io import BytesIO
-from main import model
 
 # from packages.config import DataInput, PredictOutput
 from packages.config import ProjectConfig
@@ -11,10 +10,10 @@ from packages.config import ProjectConfig
 # Project config 설정
 project_config = ProjectConfig('resnet')
 # 모델 가져오기
-#model = project_config.load_model()
-#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-#model.to(device)
-#model.eval()
+model = project_config.load_model()
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
+model.eval()
 
 resnet = APIRouter(prefix='/resnet')
 

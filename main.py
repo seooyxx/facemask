@@ -1,20 +1,11 @@
 import argparse
-import torch
+import os
+
 from fastapi import FastAPI
 from packages import resnet
 from packages import FastAPIRunner
-from packages.handler import ModelHandler
 
 app = FastAPI()
-model = None  # 전역 변수로 모델 선언
-
-@app.on_event("startup")
-async def load_model():
-    global model
-    handler = ModelHandler()
-    model = handler.load_model()
-    model.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
-    model.eval()
 
 app.include_router(resnet)
 
